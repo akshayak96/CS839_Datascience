@@ -16,11 +16,28 @@ def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     name = False
     if clean_phrase in positive_examples:
         name = True
+    vectorizer_features = vectorizer.vectorize_phrase(before_phrase, phrase.split(" "), after_phrase)
+    #print(vectorizer_features)
     feature_vector['text'] = final_phrase
     feature_vector['name'] = int(name)
     feature_vector['possessive'] = int(phrase.endswith("\'s"))
     feature_vector['comma_follows'] = int(phrase.endswith(","))
     feature_vector['comma_in_middle'] = int("," in clean_phrase)
+    _VECTORIZER_ = ['capital_check', 
+                    'al_check', 
+                    'prefix_check', 
+                    'suffix_check',
+                    'verb_check',
+                    'comma_number_after_check',
+                    'parenthetical_check',
+                    'hyphenated_check',
+                    'prefix_article_check',
+                    'prefix_preposition_check',
+                    'atter_checker'
+                    ]
+    for f in range(len(_VECTORIZER_)):
+        feature_vector[_VECTORIZER_[f]] = int(vectorizer_features[f])
+        
     return(feature_vector)
 
 def good_feature(feature):
@@ -46,7 +63,7 @@ def generate_feature_csv():
         markup_files.append(os.path.join(markup_path,file))    
     
     feature_vector_complete = []
-    for file in markup_files[0:1]:
+    for file in markup_files:
         tagged_names = None
         with open(file, 'r', encoding="utf-8") as markup_file:
             full_text = markup_file.readlines()
@@ -186,7 +203,7 @@ def generate_feature_csv():
                     #print(feature)
 
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
-        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'name']
+        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
