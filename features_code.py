@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import vectorizer
 
 def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     #print(before_phrase, phrase, after_phrase)
