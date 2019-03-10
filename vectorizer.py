@@ -13,6 +13,8 @@ Features to consider for each n-gram (ZERO / ONE)
 9) the / a / an                                        before
 10) in / at / on                                        before
 11) @...
+12) comma in middle of phrase
+13) possessive ('s) in word
 
 BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 """
@@ -84,6 +86,31 @@ def atter_checker(words):
     return any((len(x) > 0 and x[0] == '@') for x in words[1])
 
 
+def comma_middle_check(words):
+    return any("," in x for x in words[1])
+
+
+def possessive_check(words):
+    return True if len(words[1]) > 0 and words[1][-1].endswith("\'s") else False
+
+
+_VECTORIZER_NAMES_ = [
+    'capital_check',
+    'al_check',
+    'prefix_check',
+    'suffix_check',
+    'verb_check',
+    'comma_number_after_check',
+    'parenthetical_check',
+    'hyphenated_check',
+    'prefix_article_check',
+    'prefix_preposition_check',
+    'atter_checker',
+    'comma_middle_check',
+    'possessive_check'
+]
+
+
 _VECTORIZER_ = [
     capital_check,
     al_check,
@@ -95,7 +122,9 @@ _VECTORIZER_ = [
     hyphenated_check,
     prefix_article_check,
     prefix_preposition_check,
-    atter_checker
+    atter_checker,
+    comma_middle_check,
+    possessive_check
 ]
 
 

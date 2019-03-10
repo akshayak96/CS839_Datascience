@@ -1,7 +1,6 @@
 import os
 import re
 import csv
-import sys
 import vectorizer
 
 def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
@@ -22,21 +21,8 @@ def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     #print(vectorizer_features)
     feature_vector['text'] = final_phrase
     feature_vector['name'] = int(name)
-    feature_vector['possessive'] = int(phrase.endswith("\'s"))
-    feature_vector['comma_follows'] = int(phrase.endswith(","))
-    feature_vector['comma_in_middle'] = int("," in clean_phrase)
-    _VECTORIZER_ = ['capital_check', 
-                    'al_check', 
-                    'prefix_check', 
-                    'suffix_check',
-                    'verb_check',
-                    'comma_number_after_check',
-                    'parenthetical_check',
-                    'hyphenated_check',
-                    'prefix_article_check',
-                    'prefix_preposition_check',
-                    'atter_checker'
-                    ]
+    _VECTORIZER_ = vectorizer._VECTORIZER_NAMES_
+
     for f in range(len(_VECTORIZER_)):
         feature_vector[_VECTORIZER_[f]] = int(vectorizer_features[f])
         
@@ -56,9 +42,9 @@ def good_feature(feature):
             break
     return has_uppercase and all_words_uppercase
 
-def generate_feature_csv(file_directory):
+def generate_feature_csv():
     current_path = os.getcwd()
-    markup_path = os.path.join(current_path, file_directory)
+    markup_path = os.path.join(current_path, 'Data/dev')
     markup_files_temp = os.listdir(markup_path)
     markup_files = []
     for file in markup_files_temp:
@@ -203,9 +189,9 @@ def generate_feature_csv(file_directory):
                 if(good_feature(feature)):
                     feature_vector_complete.append(feature)
                     #print(feature)
-    new_file_name = file_directory + ".csv"
-    with open(new_file_name, 'w', newline='', encoding="utf-8") as csvfile:
-        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
+
+    with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
+        fieldnames = ['text'] + vectorizer._VECTORIZER_NAMES_ + ['name']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -213,5 +199,4 @@ def generate_feature_csv(file_directory):
             writer.writerow(feature)
   
 if __name__== "__main__":
-    
-  generate_feature_csv(sys.argv[1])
+  generate_feature_csv()

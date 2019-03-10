@@ -4,7 +4,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn import svm
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.metrics import precision_score, recall_score
+from collections import OrderedDict
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -26,21 +28,36 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
 # cross validation of all models
 precisions = []
 recalls = []
-models = [
-    DecisionTreeClassifier,
-    RandomForestClassifier,
-    svm.SVC,
-    #LinearRegression,
-    LogisticRegression
-]
+models = OrderedDict({
+    'decision_tree': DecisionTreeClassifier,
+    'random_forest': RandomForestClassifier,
+    'svm': svm.SVC,
+    'linear_reg': LinearRegression,
+    'logistic_reg': LogisticRegression
+})
+for k, v in models.items():
+    print('Running ' + k)
+    if k != 'linear_reg':
+        precisions.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision_macro', cv=5)))
+        recalls.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall_macro', cv=5)))
+    else:
+        kf = KFold(n_splits=5)
+        i = 0
+        temp_precisions = []
+        temp_recalls = []
+        for train_index, test_index in kf.split(x_dev):
+            x_temp_train, x_temp_test = np.array(x_dev)[train_index], np.array(x_dev)[test_index]
+            y_temp_train, y_temp_test = np.array(y_dev)[train_index], np.array(y_dev)[test_index]
+            clf = v().fit(x_temp_train, y_temp_train)
+            preds = clf.predict(x_temp_test)
+            temp_precisions.append(precision_score(y_temp_test, [x.round() for x in preds]))
+            temp_recalls.append(recall_score(y_temp_test, [x.round() for x in preds]))
+        precisions.append(np.mean(temp_precisions))
+        recalls.append(np.mean(temp_recalls))
 
-for model in models:
-    print(model)
-    precisions.append(np.mean(cross_val_score(model(), x_dev, y_dev, scoring='precision_macro', cv=5)))
-    recalls.append(np.mean(cross_val_score(model(), x_dev, y_dev, scoring='recall_macro', cv=5)))
 
 # output
-print(precisions)
-print(recalls)
+for i in range(len(models)):
+    print(list(models.keys())[i] + ' ::: ' + str(precisions[i]) + ' : ' + str(recalls[i]))
 
 # graphs
