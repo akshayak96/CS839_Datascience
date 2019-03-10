@@ -1,6 +1,7 @@
 import os
 import re
 import csv
+import sys
 import vectorizer
 
 def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
@@ -55,9 +56,13 @@ def good_feature(feature):
             break
     return has_uppercase and all_words_uppercase
 
-def generate_feature_csv():
+def generate_feature_csv(file_directory):
     current_path = os.getcwd()
+<<<<<<< Updated upstream
     markup_path = os.path.join(current_path, 'Data/dev')
+=======
+    markup_path = os.path.join(current_path, file_directory)
+>>>>>>> Stashed changes
     markup_files_temp = os.listdir(markup_path)
     markup_files = []
     for file in markup_files_temp:
@@ -202,9 +207,15 @@ def generate_feature_csv():
                 if(good_feature(feature)):
                     feature_vector_complete.append(feature)
                     #print(feature)
+<<<<<<< Updated upstream
 
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
         fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'capital_check', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
+=======
+    new_file_name = file_directory + ".csv"
+    with open(new_file_name, 'w', newline='', encoding="utf-8") as csvfile:
+        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
+>>>>>>> Stashed changes
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -212,4 +223,5 @@ def generate_feature_csv():
             writer.writerow(feature)
   
 if __name__== "__main__":
-  generate_feature_csv()
+    
+  generate_feature_csv(sys.argv[1])
