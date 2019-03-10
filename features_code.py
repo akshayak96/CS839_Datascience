@@ -57,7 +57,7 @@ def good_feature(feature):
 
 def generate_feature_csv():
     current_path = os.getcwd()
-    markup_path = os.path.join(current_path, 'Markup_Files')
+    markup_path = os.path.join(current_path, 'Data/dev')
     markup_files_temp = os.listdir(markup_path)
     markup_files = []
     for file in markup_files_temp:
@@ -204,7 +204,7 @@ def generate_feature_csv():
                     #print(feature)
 
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
-        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
+        fieldnames = ['text', 'possessive', 'comma_follows', 'comma_in_middle', 'capital_check', 'al_check', 'parenthetical_check', 'prefix_article_check', 'comma_number_after_check', 'atter_checker', 'verb_check', 'prefix_preposition_check', 'hyphenated_check', 'suffix_check', 'capital_check', 'prefix_check','name']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
