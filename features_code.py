@@ -16,10 +16,10 @@ def to_feature_vector(phrase, past_word, positive_examples):
     if clean_phrase in positive_examples:
         name = True
     feature_vector['text'] = final_phrase
-    feature_vector['name'] = name
-    feature_vector['possessive'] = phrase.endswith("\'s")
-    feature_vector['comma_follows'] = phrase.endswith(",")
-    feature_vector['comma_in_middle'] = "," in clean_phrase
+    feature_vector['name'] = int(name)
+    feature_vector['possessive'] = int(phrase.endswith("\'s"))
+    feature_vector['comma_follows'] = int(phrase.endswith(","))
+    feature_vector['comma_in_middle'] = int("," in clean_phrase)
     return(feature_vector)
 
 def good_feature(feature):
