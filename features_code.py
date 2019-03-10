@@ -2,7 +2,8 @@ import os
 import re
 import csv
 
-def to_feature_vector(phrase, past_word, positive_examples):
+def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
+    #print(before_phrase, phrase, after_phrase)
     feature_vector = {}
     to_remove = [".",",","\"","\'", "\'s"]
     final_phrase = phrase.strip()
@@ -45,7 +46,7 @@ def generate_feature_csv():
         markup_files.append(os.path.join(markup_path,file))    
     
     feature_vector_complete = []
-    for file in markup_files:
+    for file in markup_files[0:1]:
         tagged_names = None
         with open(file, 'r', encoding="utf-8") as markup_file:
             full_text = markup_file.readlines()
@@ -90,31 +91,87 @@ def generate_feature_csv():
             backlog_2_back = None
             backlog_3_back = None
             backlog_4_back = None
+            backlog_5_back = None
+            backlog_6_back = None
+            word = None
+            look_ahead_1 = None
+            look_ahead_2 = None
+            look_ahead_3 = None
             clean_text_list = clean_text.split(" ")
             clean_text_list = list(filter(("").__ne__, clean_text_list))
             for i in clean_text_list:
                 if i == "":
                     print ("oh no")
             feature_vectors = []
-            for word in clean_text_list:
+            for word_index in range(len(clean_text_list)):
+                word = clean_text_list[word_index]
+                after_phrase = []
+                try: 
+                    look_ahead_1 = clean_text_list[word_index + 1]
+                except:
+                    look_ahead_1 = None
+                try:
+                    look_ahead_2 = clean_text_list[word_index + 2]
+                except:
+                    look_ahead_2 = None
+                try:
+                    look_ahead_3 = clean_text_list[word_index + 3]
+                except:
+                    look_ahead_3 = None
+                if look_ahead_1:
+                    after_phrase.append(look_ahead_1)
+                if look_ahead_2:
+                    after_phrase.append(look_ahead_2)
+                if look_ahead_3:
+                    after_phrase.append(look_ahead_3)
                 #length 1 word
-                feature_vec = to_feature_vector(word, backlog_1_back, tagged_names)
+                before_phrase = []
+                if backlog_3_back:
+                    before_phrase.append(backlog_3_back)
+                if backlog_2_back:
+                    before_phrase.append(backlog_2_back)
+                if backlog_1_back:
+                    before_phrase.append(backlog_1_back)
+                feature_vec = to_feature_vector(word, before_phrase, after_phrase, tagged_names)
                 feature_vectors.append(feature_vec)
                 #length 2 word
                 if(backlog_1_back != None):
+                    before_phrase = []
+                    if backlog_4_back:
+                        before_phrase.append(backlog_4_back)
+                    if backlog_3_back:
+                        before_phrase.append(backlog_3_back)
+                    if backlog_2_back:
+                        before_phrase.append(backlog_2_back)
                     length_2_word = backlog_1_back + " " + word
-                    feature_vec = to_feature_vector(length_2_word, backlog_2_back, tagged_names)
+                    feature_vec = to_feature_vector(length_2_word, before_phrase, after_phrase, tagged_names)
                     feature_vectors.append(feature_vec)
                 #length 3 word
                 if(backlog_2_back != None):
+                    before_phrase = []
+                    if backlog_5_back:
+                        before_phrase.append(backlog_5_back)
+                    if backlog_4_back:
+                        before_phrase.append(backlog_4_back)
+                    if backlog_3_back:
+                        before_phrase.append(backlog_3_back)
                     length_3_word = backlog_2_back + " " + backlog_1_back + " " + word
-                    feature_vec = to_feature_vector(length_3_word, backlog_3_back, tagged_names)
+                    feature_vec = to_feature_vector(length_3_word, before_phrase, after_phrase, tagged_names)
                     feature_vectors.append(feature_vec)
                 if(backlog_3_back != None):
+                    before_phrase = []
+                    if backlog_6_back:
+                        before_phrase.append(backlog_6_back)
+                    if backlog_5_back:
+                        before_phrase.append(backlog_5_back)
+                    if backlog_4_back:
+                        before_phrase.append(backlog_4_back)
                     length_4_word = backlog_3_back + " " + backlog_2_back + " " + backlog_1_back + " " + word
-                    feature_vec = to_feature_vector(length_4_word, backlog_4_back, tagged_names)
+                    feature_vec = to_feature_vector(length_4_word, before_phrase, after_phrase, tagged_names)
                     feature_vectors.append(feature_vec)
                 #bookKeeping
+                backlog_6_back = backlog_5_back
+                backlog_5_back = backlog_4_back
                 backlog_4_back = backlog_3_back
                 backlog_3_back = backlog_2_back
                 backlog_2_back = backlog_1_back
