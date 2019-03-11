@@ -1,4 +1,4 @@
-﻿
+
 The glitz of Cannes on the French Riviera is a world removed from the hellish conditions endured by the hundreds of illegal immigrants smuggled from Africa to Europe every year.
 
 But Senegalese director <n>Moussa Toure<\n> is confronting attendees of the world's leading film festival with their story of desperation in "La Pirogue," his first feature film in 14 years.
@@ -15,9 +15,9 @@ When <n>Toure<\n> discovered his young mechanic was among those who had made the
 
 See also: Beat goes on for Senegal's octogenarian star
 
-The film was shot over two months in Senegal. Many of the actors, just like their characters, could not swim, making for some tense moments, said <n>Toure<\n>. "We had dangerous moments because we were filming at the mouth of the Saloum River and this is where it meets the sea. I was secretly terrified that we would capsize like often happens in real life. I was especially scared for those (the actors) who could not swim."<n>
+The film was shot over two months in Senegal. Many of the actors, just like their characters, could not swim, making for some tense moments, said <n>Toure<\n>. "We had dangerous moments because we were filming at the mouth of the Saloum River and this is where it meets the sea. I was secretly terrified that we would capsize like often happens in real life. I was especially scared for those (the actors) who could not swim."
 
-Moussa<\n>, a former electrician who shot his first short film in 1987, has been focusing on documentaries for the past decade. Working on "La Pirogue," his third feature, was deeply affecting, he said, and the result had made his wife cry "like I've never seen her cry before".
+<n>Moussa<\n>, a former electrician who shot his first short film in 1987, has been focusing on documentaries for the past decade. Working on "La Pirogue," his third feature, was deeply affecting, he said, and the result had made his wife cry "like I've never seen her cry before".
 
 The film, a French-Senegalese co-production, is one of 20 films selected for the "Un Certain Regard" (A Particular Outlook) section of the festival, designated for original and innovative movies seeking international recognition.
 
@@ -55,6 +55,4 @@ It tells the story of a boatload of African migrants seeking to reach Spain's Ca
 
  @highlight 
 
-Director <n>Moussa Toure<\n> said making the movie was deeply affecting<\n>
-
-African films, particularly from Senegal and Burkina Faso, have previously done well at Cannes
+Director <n>Moussa Toure<\n> said making the movie was deeply affecting African films, particularly from Senegal and Burkina Faso, have previously done well at Cannes

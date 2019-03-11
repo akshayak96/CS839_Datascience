@@ -1,4 +1,4 @@
-﻿
+
 (CNN) -- Most Americans had never heard of the Khorasan group until this week, when President <n>Barack Obama<\n> announced that U.S. airstrikes in Syria had targeted the "seasoned al-Qaeda operatives." U.S. officials said that the Khorasan group was actively plotting to conduct an attack in the United States or Europe.
 
 "We can't say that we definitely disrupted their plots" against the West with the U.S. airstrikes, a senior <n>Obama<\n> administration official told one of us, but "there is a decent chance we have" because "their communications are interrupted" and members of the group were killed in the strikes.
@@ -53,9 +53,9 @@ And, of course, the Soviets had a vast supply of nuclear-armed, land-based missi
 
 The only reasonable conclusion to draw is that the threat posed by jihadist organizations around the globe is quite inconsequential when compared with what the West faced in the past century.
 
- @highlight <n>
+ @highlight
 
-Peter Bergen<\n>, <n>Emily Schneider<\n>: Khorason shows jihad groups metastasizing. But growing?
+<n>Peter Bergen<\n>, <n>Emily Schneider<\n>: Khorason shows jihad groups metastasizing. But growing?
 
  @highlight 
 

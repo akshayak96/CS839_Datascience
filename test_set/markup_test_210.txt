@@ -1,15 +1,15 @@
-﻿
-(CNN) -- Mali's president has named <n>Diango Cissoko<\n> as the country's new interim prime minister, according to state media reports, hours after the abrupt resignation of the former prime minister following his arrest by soldiers.<n>
 
-Cissoko<\n> is a former public ombudsman for the republic, according to the state-owned newspaper L'Essor.
+(CNN) -- Mali's president has named <n>Diango Cissoko<\n> as the country's new interim prime minister, according to state media reports, hours after the abrupt resignation of the former prime minister following his arrest by soldiers.
+
+<n>Cissoko<\n> is a former public ombudsman for the republic, according to the state-owned newspaper L'Essor.
 
 In a brief online report, the newspaper states that interim President <n>Dioncounda Traore<\n> signed two decrees Tuesday, one removing <n>Diarra<\n> from office and the second naming <n>Cissoko<\n> as his successor.
 
 Read more: Opinion: Timbuktu tomb attack is an attack on our humanity
 
-"Things happened very quickly yesterday," the report says.<n>
+"Things happened very quickly yesterday," the report says.
 
-Cissoko<\n>, 62, is a longtime civil servant, according to public broadcaster ORTM, having served as secretary-general for former President <n>Moussa Traore<\n> and his successor, <n>Amadou Toumani Toure<\n>, who was deposed in March.
+<n>Cissoko<\n>, 62, is a longtime civil servant, according to public broadcaster ORTM, having served as secretary-general for former President <n>Moussa Traore<\n> and his successor, <n>Amadou Toumani Toure<\n>, who was deposed in March.
 
 <n>Diarra<\n> abruptly resigned Tuesday on state television, a day after he was arrested by soldiers loyal to a former coup leader.
 
@@ -25,9 +25,9 @@ The Economic Community of West African States, which appointed the interim presi
 
 It urged the Malian president to "take all necessary and immediate measures to form a representative and inclusive government as soon as possible in order to pursue the ongoing efforts to end the crisis."
 
-<n>Diarra<\n>, a former NASA engineer who holds U.S. citizenship, was set to fly to Paris for medical care Monday. But he received notice that his bags had been removed from the plane he was on, according to an aide who spoke to CNN on the condition of not being named.<n>
+<n>Diarra<\n>, a former NASA engineer who holds U.S. citizenship, was set to fly to Paris for medical care Monday. But he received notice that his bags had been removed from the plane he was on, according to an aide who spoke to CNN on the condition of not being named.
 
-Diarra<\n> went home. Three pickup trucks filled with armed soldiers pulled up late at night and took him away to military headquarters in Kati, five miles north of the capital, Bamako, the aide told CNN. Former coup leader Capt. <n>Amadou Sanogo<\n> met <n>Diarra<\n>.
+<n>Diarra<\n> went home. Three pickup trucks filled with armed soldiers pulled up late at night and took him away to military headquarters in Kati, five miles north of the capital, Bamako, the aide told CNN. Former coup leader Capt. <n>Amadou Sanogo<\n> met <n>Diarra<\n>.
 
 Before dawn, armed soldiers brought the former prime minister to broadcaster ORTM and gave him a statement to read, said TV technician <n>Adama Haidara<\n>. "I cannot say if he was forced," <n>Haidara<\n> said. "He looked unharmed."
 
@@ -37,9 +37,9 @@ Read more: International outrage grows over destruction of Mali shrines
 
 "Our country, Mali, is going through the most difficult period in its history," he said. "During this time of crisis, the men and women of this country -- uncertain of what is going to happen to their country -- find themselves in an unfortunate situation.
 
-"That's why I, <n>Cheikh Modibo Diarra<\n>, have resigned with all my government, on this day, Tuesday, 11 of December of 2012."<n>
+"That's why I, <n>Cheikh Modibo Diarra<\n>, have resigned with all my government, on this day, Tuesday, 11 of December of 2012."
 
-Diarra<\n>'s whereabouts are unknown, but his aide said Tuesday he believed he was still in Bamako. He was not harmed when he was arrested, the aide said.
+<n>Diarra<\n>'s whereabouts are unknown, but his aide said Tuesday he believed he was still in Bamako. He was not harmed when he was arrested, the aide said.
 
 "The arrest was made by a small force loyal to <n>Sanogo<\n>," army spokesperson Col. <n>Idrissa Traore<\n> said. "The majority of the military officers in Bamako were not informed about the arrest of Mr. <n>Diarra<\n>, and no one knows what will happen now."
 
@@ -89,9 +89,9 @@ At least four times this year, the militants have attacked Timbuktu's historic t
 
 CNN's <n>Faith Karimi<\n> contributed to this report
 
- @highlight <n>
+ @highlight 
 
-Diango Cissoko<\n> is named as Mali's new interim prime minster
+<n>Diango Cissoko<\n> is named as Mali's new interim prime minster
 
  @highlight 
 

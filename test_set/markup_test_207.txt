@@ -1,11 +1,11 @@
-﻿
+
 The Keystone XL pipeline represents a big step toward true North American energy independence, reducing our reliance on Middle Eastern oil and increasing our access to energy from our own nation and our closest ally, Canada, along with some oil from Mexico -- to 75% of our daily consumption, compared with 70% now.
 
 That decades-long goal for our country is finally within reach, but we need to stay focused on the big picture, and we need to act. This $7 billion, 1,700-mile, high-tech transcontinental pipeline is a big-time, private-sector job creator, and it will also hold down the gas prices for consumers and reduce our energy dependence on an unstable part of the world. Finally, it will do so with good environmental stewardship.
 
-That's why I, along with 44 of my colleagues from across the nation, introduced new legislation to move the project toward approval and construction after President <n>Barack Obama<n>'s rejection of the project last month.
+That's why I, along with 44 of my colleagues from across the nation, introduced new legislation to move the project toward approval and construction after President <n>Barack Obama<\n>'s rejection of the project last month.
 
-Another view: <n>Ted Turner<n> on the case against the Keystone XL pipeline
+Another view: <n>Ted Turner<\n> on the case against the Keystone XL pipeline
 
  The Hoeven-Lugar-Vitter amendment to the highway funding bill, which we are now working to pass, authorizes TransCanada to construct and operate the Keystone XL pipeline from Alberta, Canada, to the Midwest and Gulf Coast, transporting an additional 830,000 barrels of oil per day to U.S. refineries. This includes 100,000 barrels of crude oil a day from the Bakken region of North Dakota and Montana.
 
@@ -33,9 +33,9 @@ Join the conversation on Facebook
 
 Keystone XL pipeline would take crude oil from Canada through Midwest to Gulf Coast
 
- @highlight <n>
+ @highlight 
 
-John Hoeven<n>: It will create jobs, help lead to North American energy independence
+<n>John Hoeven<\n>: It will create jobs, help lead to North American energy independence
 
  @highlight 
 
@@ -43,4 +43,4 @@ Hoeven-Lugar-Vitter amendment would allow TransCanada to build the pipeline
 
  @highlight 
 
-State Department reports it will have little environmental impact, <n>Hoeven<n> writes
+State Department reports it will have little environmental impact, <n>Hoeven<\n> writes
