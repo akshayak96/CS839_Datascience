@@ -26,7 +26,7 @@ CNN's <n>Samson Desta<\n> and journalist <n>Nasir Habib<\n> contributed to this 
 
 @highlight
 
-Pakistan's Prime Minister <n>Yousaf Raza Gilani\n> tells reporter operation against Taliban is over
+Pakistan's Prime Minister <n>Yousaf Raza Gilani<\n> tells reporter operation against Taliban is over
 
 @highlight
 
