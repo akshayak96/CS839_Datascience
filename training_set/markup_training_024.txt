@@ -20,7 +20,7 @@ Given all that, the scientists write: "We conclude that the MISS in the Dresser 
 
 Ancient African coins that could change history of Australia
 
-The fact this find was in Western Australia is no accident. The area has long been a treasure trove for Earth scientists delving into the past. Stromatolites found in Warrawoona trace back about 3.45 billion years, while microfossils from Marble Bar go back to 3.47 billion years, notes University of Washington scientist <n>Roger Buick</n>.
+The fact this find was in Western Australia is no accident. The area has long been a treasure trove for Earth scientists delving into the past. Stromatolites found in Warrawoona trace back about 3.45 billion years, while microfossils from Marble Bar go back to 3.47 billion years, notes University of Washington scientist <n>Roger Buick<\n>.
 
 "The Dresser Formation is the oldest rock succession of sedimentary rocks that was never affected by any tectonics," or big changes in the surface caused by earthquakes and the like, said <n>Noffke<\n>. "Those rocks were just sitting there, nothing ever happened to them. That means any life is nicely preserved."
 
