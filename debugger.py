@@ -1,7 +1,7 @@
 import csv
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import cross_val_predict, cross_val_score
 from collections import OrderedDict
 import random
 from sklearn.metrics import precision_score, recall_score, f1_score
@@ -10,7 +10,7 @@ import features_code
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv('training_set')
+#features_code.generate_feature_csv('training_set')
 
 # read from file
 terms = []
@@ -21,11 +21,12 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
     header = True
     for row in reader:
         if header:
+            print(row)
             header = False
             continue
         terms.append(row[0])
         row = [int(x) for x in row[1:]]
-        x_dev.append(row[1:-1])
+        x_dev.append(row[:-1])
         y_dev.append(row[-1])
 
 c = list(zip(terms, x_dev, y_dev))
@@ -51,3 +52,6 @@ for k, v in models.items():
         if preds[i] != y_dev[i] and preds[i] == 1:
             print(terms[i] + " : ", end='')
             print(x_dev[i])
+
+    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision_macro', cv=5)))
+    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall_macro', cv=5)))

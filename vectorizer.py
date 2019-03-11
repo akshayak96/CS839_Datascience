@@ -18,6 +18,7 @@ Features to consider for each n-gram (ZERO / ONE)
 14) number of words
 15) if a period or question marks exists before during or after
 16) jr / sr / iii / iv / v in word
+17) common word in current
 
 BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 """
@@ -25,10 +26,10 @@ BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 
 def capital_check(words):
     capital_blacklist = ["de", "von", "van", "bin"]
-    caps = 0
-    for word in words[1]:
-        caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
-    return caps / len(words[1])
+    #caps = 0
+    #for word in words[1]:
+    #    caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
+    return any(len(x) > 0 and (x[0].isupper() or any(y == x for y in capital_blacklist)) for x in words[1])
 
 
 def al_check(words):
@@ -39,7 +40,7 @@ def prefix_check(words):
     prefix_whitelist = [
         "mr", "dr", "mrs", "ms", "deputy", "chief", "president", "spokesman",
         "spokeswoman", "senator", "sen", "republican", "rep", "democratic", "dem",
-        "secretary", "minister", "sir", "lord", "ambassador", "rev"
+        "secretary", "minister", "sir", "lord", "ambassador", "rev", "col", "lt"
     ]
     return any((x.replace(".", "").lower() in prefix_whitelist for x in words[0]))
 
@@ -118,6 +119,11 @@ def jr_sr_check(words):
     ]
     return any((x.replace(".", "").lower() in prefix_preposition_whitelist for x in words[1]))
 
+def common_word_checker(words):
+    common_words = ['if', 'of', 'it', 'he', 'it\'s', 'who', 'we', '@highlight', 'the']
+    return not any((x.replace(".", "").lower() in common_words for x in words[1]))
+
+
 _VECTORIZER_NAMES_ = [
     'capital_check',
     'al_check',
@@ -129,12 +135,13 @@ _VECTORIZER_NAMES_ = [
     'hyphenated_check',
     'prefix_article_check',
     'prefix_preposition_check',
-#    'atter_checker',
+   # 'atter_checker',
    # 'comma_middle_check',
     'possessive_check',
     'num_words',
     #'check_punctuation',
-    'jr_sr_check'
+    #'jr_sr_check',
+    'common_word_checker'
 ]
 
 
@@ -149,17 +156,18 @@ _VECTORIZER_ = [
     hyphenated_check,
     prefix_article_check,
     prefix_preposition_check,
-#    atter_checker,
+ #   atter_checker,
 #    comma_middle_check,
     possessive_check,
     num_words,
  #   check_punctuation,
-    jr_sr_check
+ #   jr_sr_check,
+    common_word_checker
 ]
 
 
 _BLACKLIST_ = [
-    "Deputy", "Chief", "President", "Senator", "Sen.",  "CNN", "Mashable"
+    "Deputy", "Chief", "President", "Senator", "Sen.",  "CNN", "Mashable", "Commissioner", "It's", "Japan",
 ]
 
 

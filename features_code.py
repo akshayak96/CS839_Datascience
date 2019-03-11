@@ -189,9 +189,9 @@ def generate_feature_csv(directory_name):
             #    if(feature[1] == True):
             #        print(feature)
             for feature in feature_vectors:
-                #if(good_feature(feature)):
+            #    #if(good_feature(feature)):
                 feature_vector_complete.append(feature)
-                    #print(feature)
+            #        #print(feature)
     file_name = directory_name + ".csv"
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
         fieldnames = ['text'] + vectorizer._VECTORIZER_NAMES_ + ['name']

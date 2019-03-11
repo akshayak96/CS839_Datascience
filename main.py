@@ -26,7 +26,7 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
             header = False
             continue
         row = [int(x) for x in row[1:]]
-        x_dev.append(row[1:-1])
+        x_dev.append(row[:-1])
         y_dev.append(row[-1])
 
 c = list(zip(x_dev, y_dev))
