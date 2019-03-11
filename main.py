@@ -12,7 +12,7 @@ import features_code
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv()
+features_code.generate_feature_csv('training_set')
 
 # read from file
 x_dev = []
@@ -60,7 +60,7 @@ for k, v in models.items():
             y_temp_train, y_temp_test = np.array(y_dev)[train_index], np.array(y_dev)[test_index]
             clf = v().fit(x_temp_train, y_temp_train)
             preds = clf.predict(x_temp_test)
-            thresh = 0.8
+            thresh = 0.2
             temp_precisions.append(precision_score(y_temp_test, [1 if x > thresh else 0 for x in preds]))
             temp_recalls.append(recall_score(y_temp_test, [1 if x > thresh else 0 for x in preds]))
         precisions.append(np.mean(temp_precisions))
