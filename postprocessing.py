@@ -1,13 +1,15 @@
 import csv
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 import features_code
 from sklearn.metrics import precision_score, recall_score, f1_score
+import vectorizer
 
 import warnings
 warnings.filterwarnings("ignore")
 
 features_code.generate_feature_csv('training_set')
+
+whitelist = []
 
 # read from file
 x_train = []
@@ -19,6 +21,9 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
         if header:
             header = False
             continue
+        if int(row[-1]) == 1:
+            whitelist.append(row[0])
+
         row = [float(x) for x in row[1:]]
         x_train.append(row[:-1])
         y_train.append(row[-1])
@@ -44,17 +49,16 @@ print(len(x_test))
 print(sum(y_train))
 print(sum(y_test))
 
-
 clf = RandomForestClassifier().fit(x_train, y_train)
 preds = clf.predict(x_test)
 
 print(len(preds))
 
 for i in range(len(preds)):
-    # print false positive
-    if preds[i] != y_test[i] and preds[i] == 0:
-        print(terms_test[i] + " : ", end='')
-        print(x_test[i])
+    if vectorizer.in_blacklist(terms_test[i]):
+        preds[i] = 0
+    if terms_test[i] in whitelist:
+        preds[i] = 1
 
 print("Precision : " + str(precision_score(y_pred=preds, y_true=y_test)))
 print("Recall    : " + str(recall_score(y_pred=preds, y_true=y_test)))

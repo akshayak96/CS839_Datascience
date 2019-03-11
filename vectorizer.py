@@ -1,39 +1,15 @@
 """
 Features to consider for each n-gram (ZERO / ONE)
-
-1) Capitalization - if first letter(s) capitalized unless de / von / van
-2) 'al-<capital>...'
-3) Mr / Dr / Mrs / Ms / Deputy / Chief / President
-   Senator / Sen. etc                                  before
-4) administration / regime etc                         after
-5) said / asked / told                                 before OR after
-6) <comma> <number> <comma>                            after
-7) <paranthesis>                                       before AND after
-8) hyphenated ?
-9) the / a / an                                        before
-10) in / at / on                                       before
-11) @...
-12) comma in middle of phrase
-13) possessive ('s) in word
-14) number of words
-15) if a period or question marks exists before during or after
-16) jr / sr / iii / iv / v in word
-17) common word in current
-18) if len is > 2
-19) check if at least one lower case
-20) check if previous word has first capital and no possessive
-
-BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 """
 
 capital_blacklist = ["de", "von", "van", "bin"]
 
 
 def capital_check(words):
-    #caps = 0
-    #for word in words[1]:
-    #    caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
-    return any(len(x) > 0 and (x[0].isupper() or any(y == x for y in capital_blacklist)) for x in words[1])
+    caps = 0
+    for word in words[1]:
+        caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
+    return caps
 
 
 def al_check(words):
@@ -191,9 +167,6 @@ def contains_digit(words):
     return False
 
 def lower_check(words):
-    #caps = 0
-    #for word in words[1]:
-    #    caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
     return any(len(x) > 0 and (x[0].islower()) for x in words[1])
 
 
@@ -241,7 +214,7 @@ _VECTORIZER_ = [
     num_words,
     check_punctuation,
     jr_sr_check,
-   common_word_checker,
+    common_word_checker,
     last_capital,
     vowel_percentage,
     word_length,
@@ -256,7 +229,8 @@ _BLACKLIST_PART_ = [
     "cnn", "mashable",  "japan", "cnn\'s", "australia", "japan",
     "state", "al-qaeda", "al-adha", "just", "before", "first",
     "more", "us", "@highlight", "new:", "hw"
-] + prefix_whitelist + suffix_whitelist + verb_whitelist + common_words
+]
+
 
 _BLACKLIST_ = ["jr", "sr"]
 
