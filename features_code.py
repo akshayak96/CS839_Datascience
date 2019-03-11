@@ -24,7 +24,7 @@ def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     _VECTORIZER_ = vectorizer._VECTORIZER_NAMES_
 
     for f in range(len(_VECTORIZER_)):
-        feature_vector[_VECTORIZER_[f]] = int(vectorizer_features[f])
+        feature_vector[_VECTORIZER_[f]] = float(vectorizer_features[f])
         
     return(feature_vector)
 
@@ -43,6 +43,7 @@ def good_feature(feature):
     return has_uppercase and all_words_uppercase
 
 def generate_feature_csv(directory_name):
+    tag_count = 0
     current_path = os.getcwd()
     markup_path = os.path.join(current_path, directory_name)
     markup_files_temp = os.listdir(markup_path)
@@ -57,11 +58,11 @@ def generate_feature_csv(directory_name):
             full_text = markup_file.readlines()
             text = "".join(full_text)
             modified_text = text.replace("\n", " ")
-
             regrex = "(?<=<n>)(.*?)(?=<\\\\n>)"
             #print(re.findall("<n>([^]*)<\\\\n>", modified_text))
             #print(re.findall("<\\\\n>", modified_text))
             matches = re.findall(regrex, modified_text)
+            tag_count += len(matches)
             matches = list(set(matches))
             for match in matches:
                 breakdown = match.split(" ")
@@ -189,8 +190,8 @@ def generate_feature_csv(directory_name):
             #    if(feature[1] == True):
             #        print(feature)
             for feature in feature_vectors:
-            #    #if(good_feature(feature)):
-                feature_vector_complete.append(feature)
+                if(good_feature(feature)):
+                    feature_vector_complete.append(feature)
             #        #print(feature)
     file_name = directory_name + ".csv"
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
@@ -200,6 +201,7 @@ def generate_feature_csv(directory_name):
         writer.writeheader()
         for feature in feature_vector_complete:
             writer.writerow(feature)
+    print(tag_count)
   
 if __name__== "__main__":
   generate_feature_csv(sys.argv[1])

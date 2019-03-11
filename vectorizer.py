@@ -157,6 +157,43 @@ def last_capital(words):
     return True if len(words[0]) > 0 and len(words[0][-1]) > 0 and \
                    words[0][-1][0].isupper() and not words[0][-1][0].endswith("\'s") else False
 
+def vowel_percentage(words):
+    vowels = "aeiouy"
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    letter_count = 0
+    vowel_count = 0
+    phrase = ("".join(words[1])).lower()
+    for letter in phrase:
+        if letter in alphabet:
+            letter_count += 1
+            if letter in vowels:
+                vowel_count += 1
+    if(letter_count == 0):
+        #print(phrase)
+        return 0
+    else:
+        return vowel_count/letter_count
+
+def word_length(words):
+    phrase = "".join(words[1]).lower()
+    return len(phrase)
+
+def num_words(words):
+    phrase = words[1]
+    return len(phrase)
+
+def avg_word_len(words):
+    phrase = words[1]
+    phrase_string = "".join(words[1]).lower()
+    return len(phrase_string)/len(phrase)
+
+def contains_digit(words):
+    phrase = "".join(words[1])
+    for i in phrase:
+        if i.isdigit():
+            return False
+    return True
+
 
 _VECTORIZER_NAMES_ = [
     'capital_check',
@@ -164,19 +201,23 @@ _VECTORIZER_NAMES_ = [
     'prefix_check',
     'suffix_check',
     'verb_check',
- #   'comma_number_after_check',
-    #'parenthetical_check',
- #   'hyphenated_check',
+    'comma_number_after_check',
+    'parenthetical_check',
+    'hyphenated_check',
     'prefix_article_check',
     'prefix_preposition_check',
-   # 'atter_checker',
-   # 'comma_middle_check',
+    'atter_checker',
+    'comma_middle_check',
     'possessive_check',
     'num_words',
-    #'check_punctuation',
+    'check_punctuation',
     'jr_sr_check',
     'common_word_checker',
-    #'last_capital'
+    'last_capital',
+    'vowel_percentage',
+    'word_length',
+    'avg_word_len',
+    "contains_digit",
 ]
 
 
@@ -186,19 +227,24 @@ _VECTORIZER_ = [
     prefix_check,
     suffix_check,
     verb_check,
-#    comma_number_after_check,
-#    parenthetical_check,
-#    hyphenated_check,
+    comma_number_after_check,
+    parenthetical_check,
+    hyphenated_check,
     prefix_article_check,
     prefix_preposition_check,
- #   atter_checker,
-#    comma_middle_check,
+    atter_checker,
+    comma_middle_check,
     possessive_check,
     num_words,
- #   check_punctuation,
+    check_punctuation,
     jr_sr_check,
    common_word_checker,
-   # last_capital
+    last_capital,
+    vowel_percentage,
+    word_length,
+    num_words,
+    avg_word_len,
+    contains_digit
 ]
 
 

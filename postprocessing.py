@@ -18,7 +18,7 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
         if header:
             header = False
             continue
-        row = [int(x) for x in row[1:]]
+        row = [float(x) for x in row[1:]]
         x_train.append(row[:-1])
         y_train.append(row[-1])
 
@@ -34,7 +34,7 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
             header = False
             continue
         terms_test.append(row[0])
-        row = [int(x) for x in row[1:]]
+        row = [float(x) for x in row[1:]]
         x_test.append(row[:-1])
         y_test.append(row[-1])
 
