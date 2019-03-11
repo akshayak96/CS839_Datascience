@@ -33,6 +33,7 @@ print(len(x_dev))
 # cross validation of all models
 precisions = []
 recalls = []
+f1s = []
 models = OrderedDict({
     'decision_tree': DecisionTreeClassifier,
     'random_forest': RandomForestClassifier,
@@ -47,9 +48,13 @@ for k, v in models.items():
             max_iter = 500
             precisions.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='precision', cv=5)))
             recalls.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='recall', cv=5)))
+            f1s.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='f1', cv=5)))
+
         else:
             precisions.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision', cv=5)))
             recalls.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall', cv=5)))
+            f1s.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='f1', cv=5)))
+
     else:
         kf = KFold(n_splits=5)
         i = 0
@@ -67,6 +72,7 @@ for k, v in models.items():
         recalls.append(np.mean(temp_recalls))
     print(precisions[-1])
     print(recalls[-1])
+    print(f1s[-1])
 
 
 # output

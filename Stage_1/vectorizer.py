@@ -102,12 +102,12 @@ def check_punctuation(words):
     val = False
     for lis in words:
         val = val or any("." in x for x in lis) or any("?" in x for x in lis) or \
-              any("?" in x for x in lis)
+              any("!" in x for x in lis)
     return not val
 
 
 prefix_jr_sr_whitelist = [
-    "jr", "sr"
+    "jr", "sr", "iii"
 ]
 
 
