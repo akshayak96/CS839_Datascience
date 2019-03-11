@@ -93,7 +93,7 @@ def generate_feature_csv(directory_name):
                         name.lower().replace(".", "") != "ii" and \
                         name.lower().replace(".", "") != "iii" and \
                         name.lower().replace(".", "") != "iv":
-                            tagged_names.append(name)
+                            tagged_names.append(name.strip())
             #print(matches)
             clean_text = modified_text.replace("<n>", "").replace("<\\n>", "").replace("</n>", "").replace("\ufeff", "")
             backlog_1_back = None
