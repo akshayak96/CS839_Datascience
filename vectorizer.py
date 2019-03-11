@@ -11,17 +11,20 @@ Features to consider for each n-gram (ZERO / ONE)
 7) <paranthesis>                                       before AND after
 8) hyphenated ?
 9) the / a / an                                        before
-10) in / at / on                                        before
+10) in / at / on                                       before
 11) @...
 12) comma in middle of phrase
 13) possessive ('s) in word
+14) number of words
+15) if a period or question marks exists before during or after
+16) jr / sr / iii / iv / v in word
 
 BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 """
 
 
 def capital_check(words):
-    capital_blacklist = ["de", "von", "van"]
+    capital_blacklist = ["de", "von", "van", "bin"]
     return all(((len(x) > 0 and x[0].isupper()) or any(y == x for y in capital_blacklist)) for x in words[1])
 
 
@@ -32,14 +35,15 @@ def al_check(words):
 def prefix_check(words):
     prefix_whitelist = [
         "mr", "dr", "mrs", "ms", "deputy", "chief", "president", "spokesman",
-        "spokeswoman", "senator", "sen", "republican", "rep", "democratic", "dem"
+        "spokeswoman", "senator", "sen", "republican", "rep", "democratic", "dem",
+        "secretary", "minister", "sir", "lord", "ambassador", "rev"
     ]
     return any((x.replace(".", "").lower() in prefix_whitelist for x in words[0]))
 
 
 def suffix_check(words):
     suffix_whitelist = [
-        "administration", "regime", "spokesman", "spokeswoman"
+        "administration"
     ]
     return any((x.replace(".", "").lower() in suffix_whitelist for x in words[2]))
 
@@ -72,27 +76,44 @@ def prefix_article_check(words):
     prefix_article_whitelist = [
         "the", "a", "an"
     ]
-    return any((x.replace(".", "").lower() in prefix_article_whitelist for x in words[0]))
+    return not any((x.replace(".", "").lower() in prefix_article_whitelist for x in words[0]))
 
 
 def prefix_preposition_check(words):
     prefix_preposition_whitelist = [
         "in", "on", "at"
     ]
-    return any((x.replace(".", "").lower() in prefix_preposition_whitelist for x in words[0]))
+    return not any((x.replace(".", "").lower() in prefix_preposition_whitelist for x in words[0]))
 
 
 def atter_checker(words):
-    return any((len(x) > 0 and x[0] == '@') for x in words[1])
+    return not any((len(x) > 0 and x[0] == '@') for x in words[1])
 
 
 def comma_middle_check(words):
-    return any("," in x for x in words[1])
+    return not any("," in x for x in words[1])
 
 
 def possessive_check(words):
     return True if len(words[1]) > 0 and words[1][-1].endswith("\'s") else False
 
+
+def num_words(words):
+    return len(words[1])
+
+
+def check_punctuation(words):
+    val = False
+    for lis in words:
+        val = val or any("." in x for x in lis) or any("?" in x for x in lis) or \
+              any("?" in x for x in lis)
+    return not val
+
+def jr_sr_check(words):
+    prefix_preposition_whitelist = [
+        "jr", "sr", "ii", "iii", "iv", "v"
+    ]
+    return any((x.replace(".", "").lower() in prefix_preposition_whitelist for x in words[1]))
 
 _VECTORIZER_NAMES_ = [
     'capital_check',
@@ -100,14 +121,17 @@ _VECTORIZER_NAMES_ = [
     'prefix_check',
     'suffix_check',
     'verb_check',
-    'comma_number_after_check',
-    'parenthetical_check',
+ #   'comma_number_after_check',
+    #'parenthetical_check',
     'hyphenated_check',
     'prefix_article_check',
     'prefix_preposition_check',
-    'atter_checker',
-    'comma_middle_check',
-    'possessive_check'
+   # 'atter_checker',
+   # 'comma_middle_check',
+    'possessive_check',
+    'num_words',
+    #'check_punctuation',
+    'jr_sr_check'
 ]
 
 
@@ -117,14 +141,17 @@ _VECTORIZER_ = [
     prefix_check,
     suffix_check,
     verb_check,
-    comma_number_after_check,
-    parenthetical_check,
+#    comma_number_after_check,
+#    parenthetical_check,
     hyphenated_check,
     prefix_article_check,
     prefix_preposition_check,
-    atter_checker,
-    comma_middle_check,
-    possessive_check
+#    atter_checker,
+#    comma_middle_check,
+    possessive_check,
+    num_words,
+ #   check_punctuation,
+    jr_sr_check
 ]
 
 
@@ -132,13 +159,18 @@ _BLACKLIST_ = [
     "Deputy", "Chief", "President", "Senator", "Sen.",  "CNN", "Mashable"
 ]
 
+
 """
 :param xwords - any words previous to current
 :param ywords - any words currently being considered
 :param zwords - any following words
 """
 def vectorize_phrase(xwords, ywords, zwords, vectorizers=_VECTORIZER_):
-    return [vectorizer([xwords, ywords, zwords]) for vectorizer in vectorizers]
+    return [vectorizer([
+        [x.replace("\"", "") for x in xwords],
+        [x.replace("\"", "") for x in ywords],
+        [x.replace("\"", "") for x in zwords]
+    ]) for vectorizer in vectorizers]
 
 
 def in_blacklist(yword):

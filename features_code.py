@@ -18,7 +18,6 @@ def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     if clean_phrase in positive_examples:
         name = True
     vectorizer_features = vectorizer.vectorize_phrase(before_phrase, phrase.split(" "), after_phrase)
-    #print(vectorizer_features)
     feature_vector['text'] = final_phrase
     feature_vector['name'] = int(name)
     _VECTORIZER_ = vectorizer._VECTORIZER_NAMES_
@@ -44,7 +43,7 @@ def good_feature(feature):
 
 def generate_feature_csv():
     current_path = os.getcwd()
-    markup_path = os.path.join(current_path, 'Data/dev')
+    markup_path = os.path.join(current_path, 'training_set')
     markup_files_temp = os.listdir(markup_path)
     markup_files = []
     for file in markup_files_temp:
@@ -88,20 +87,20 @@ def generate_feature_csv():
             temp_names = list(set(matches))
             tagged_names = []
             for name in temp_names:
-                if len(name) > 1:
-                    tagged_names.append(name)
+                if len(name) > 1 and name.lower().replace(".", "") != "jr" and \
+                        name.lower().replace(".", "") != "sr" and \
+                        name.lower().replace(".", "") != "ii" and \
+                        name.lower().replace(".", "") != "iii" and \
+                        name.lower().replace(".", "") != "iv":
+                            tagged_names.append(name)
             #print(matches)
-            clean_text = modified_text.replace("<n>", "").replace("<\\n>", "").replace("\ufeff", "")
+            clean_text = modified_text.replace("<n>", "").replace("<\\n>", "").replace("</n>", "").replace("\ufeff", "")
             backlog_1_back = None
             backlog_2_back = None
             backlog_3_back = None
             backlog_4_back = None
             backlog_5_back = None
             backlog_6_back = None
-            word = None
-            look_ahead_1 = None
-            look_ahead_2 = None
-            look_ahead_3 = None
             clean_text_list = clean_text.split(" ")
             clean_text_list = list(filter(("").__ne__, clean_text_list))
             for i in clean_text_list:
@@ -163,6 +162,8 @@ def generate_feature_csv():
                     length_3_word = backlog_2_back + " " + backlog_1_back + " " + word
                     feature_vec = to_feature_vector(length_3_word, before_phrase, after_phrase, tagged_names)
                     feature_vectors.append(feature_vec)
+                #length 4 word
+                """
                 if(backlog_3_back != None):
                     before_phrase = []
                     if backlog_6_back:
@@ -174,6 +175,7 @@ def generate_feature_csv():
                     length_4_word = backlog_3_back + " " + backlog_2_back + " " + backlog_1_back + " " + word
                     feature_vec = to_feature_vector(length_4_word, before_phrase, after_phrase, tagged_names)
                     feature_vectors.append(feature_vec)
+                """
                 #bookKeeping
                 backlog_6_back = backlog_5_back
                 backlog_5_back = backlog_4_back
@@ -186,8 +188,8 @@ def generate_feature_csv():
             #    if(feature[1] == True):
             #        print(feature)
             for feature in feature_vectors:
-                if(good_feature(feature)):
-                    feature_vector_complete.append(feature)
+                #if(good_feature(feature)):
+                feature_vector_complete.append(feature)
                     #print(feature)
 
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
