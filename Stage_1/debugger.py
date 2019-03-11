@@ -1,6 +1,5 @@
 import csv
 import numpy as np
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_predict, cross_val_score
 from collections import OrderedDict
@@ -10,7 +9,7 @@ import features_code
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv('training_set')
+features_code.generate_feature_csv('../training_set')
 
 # read from file
 terms = []
@@ -53,5 +52,5 @@ for k, v in models.items():
             print(terms[i] + " : ", end='')
             print(x_dev[i])
 
-    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision_macro', cv=5)))
-    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall_macro', cv=5)))
+    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision', cv=5)))
+    print(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall', cv=5)))

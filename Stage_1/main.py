@@ -12,7 +12,7 @@ import features_code
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv("training_set")
+features_code.generate_feature_csv("../training_set")
 
 # read from file
 x_dev = []
@@ -45,11 +45,11 @@ for k, v in models.items():
     if k != 'linear_reg':
         if k == 'svm':
             max_iter = 500
-            precisions.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='precision_macro', cv=5)))
-            recalls.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='recall_macro', cv=5)))
+            precisions.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='precision', cv=5)))
+            recalls.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='recall', cv=5)))
         else:
-            precisions.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision_macro', cv=5)))
-            recalls.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall_macro', cv=5)))
+            precisions.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='precision', cv=5)))
+            recalls.append(np.mean(cross_val_score(v(), x_dev, y_dev, scoring='recall', cv=5)))
     else:
         kf = KFold(n_splits=5)
         i = 0
