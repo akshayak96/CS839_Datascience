@@ -7,7 +7,7 @@ import sys
 def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     #print(before_phrase, phrase, after_phrase)
     feature_vector = {}
-    to_remove = [".",",","\"","\'", "\'s"]
+    to_remove = [".",",","\"","\'", "\'s",":"]
     final_phrase = phrase.strip()
     clean_phrase = phrase
     for bad in to_remove:

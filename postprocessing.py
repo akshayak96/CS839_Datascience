@@ -1,5 +1,6 @@
 import csv
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 import features_code
 from sklearn.metrics import precision_score, recall_score, f1_score
 
@@ -44,7 +45,7 @@ print(sum(y_train))
 print(sum(y_test))
 
 
-clf = DecisionTreeClassifier().fit(x_train, y_train)
+clf = RandomForestClassifier().fit(x_train, y_train)
 preds = clf.predict(x_test)
 
 print(len(preds))

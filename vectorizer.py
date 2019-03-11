@@ -178,10 +178,6 @@ def word_length(words):
     phrase = "".join(words[1]).lower()
     return len(phrase)
 
-def num_words(words):
-    phrase = words[1]
-    return len(phrase)
-
 def avg_word_len(words):
     phrase = words[1]
     phrase_string = "".join(words[1]).lower()
@@ -191,8 +187,14 @@ def contains_digit(words):
     phrase = "".join(words[1])
     for i in phrase:
         if i.isdigit():
-            return False
-    return True
+            return True
+    return False
+
+def lower_check(words):
+    #caps = 0
+    #for word in words[1]:
+    #    caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
+    return any(len(x) > 0 and (x[0].islower()) for x in words[1])
 
 
 _VECTORIZER_NAMES_ = [
@@ -218,6 +220,7 @@ _VECTORIZER_NAMES_ = [
     'word_length',
     'avg_word_len',
     "contains_digit",
+    "lower_check",
 ]
 
 
@@ -244,7 +247,8 @@ _VECTORIZER_ = [
     word_length,
     num_words,
     avg_word_len,
-    contains_digit
+    contains_digit,
+    lower_check,
 ]
 
 

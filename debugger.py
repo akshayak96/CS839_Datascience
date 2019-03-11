@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_predict, cross_val_score
 from collections import OrderedDict
 import random
@@ -24,7 +25,7 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
             header = False
             continue
         terms.append(row[0])
-        row = [int(x) for x in row[1:]]
+        row = [float(x) for x in row[1:]]
         x_dev.append(row[:-1])
         y_dev.append(row[-1])
 
@@ -39,7 +40,7 @@ precisions = []
 recalls = []
 f1s = []
 models = OrderedDict({
-    'dec_tree': DecisionTreeClassifier,
+    'ran_tree': RandomForestClassifier,
 })
 for k, v in models.items():
     print('Running ' + k)
