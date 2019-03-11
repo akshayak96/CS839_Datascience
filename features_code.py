@@ -2,6 +2,7 @@ import os
 import re
 import csv
 import vectorizer
+import sys
 
 def to_feature_vector(phrase, before_phrase, after_phrase, positive_examples):
     #print(before_phrase, phrase, after_phrase)
@@ -41,9 +42,9 @@ def good_feature(feature):
             break
     return has_uppercase and all_words_uppercase
 
-def generate_feature_csv():
+def generate_feature_csv(directory_name):
     current_path = os.getcwd()
-    markup_path = os.path.join(current_path, 'training_set')
+    markup_path = os.path.join(current_path, directory_name)
     markup_files_temp = os.listdir(markup_path)
     markup_files = []
     for file in markup_files_temp:
@@ -191,7 +192,7 @@ def generate_feature_csv():
                 #if(good_feature(feature)):
                 feature_vector_complete.append(feature)
                     #print(feature)
-
+    file_name = directory_name + ".csv"
     with open('features.csv', 'w', newline='', encoding="utf-8") as csvfile:
         fieldnames = ['text'] + vectorizer._VECTORIZER_NAMES_ + ['name']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -201,4 +202,4 @@ def generate_feature_csv():
             writer.writerow(feature)
   
 if __name__== "__main__":
-  generate_feature_csv()
+  generate_feature_csv(sys.argv[1])
