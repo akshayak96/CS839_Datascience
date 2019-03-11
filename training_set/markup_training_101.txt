@@ -38,7 +38,7 @@ Of course, Hollywood had to weigh in.
 
 Actor <n>Josh Gad<\n> suggested a time-traveling solution to the whole "Sharknado" phenomenon.
 
-"If (Steven) <n>Spielberg<\n> could go back in time and stop Jaws from happening to prevent 2013's #SharkNado, I believe he would."
+"If (<n>Steven<\n>) <n>Spielberg<\n> could go back in time and stop Jaws from happening to prevent 2013's #SharkNado, I believe he would."
 
 Of course, there were some regrets.
 

@@ -25,7 +25,10 @@ BLACKLIST : Deputy / Chief / President / Senator / Sen. / CNN
 
 def capital_check(words):
     capital_blacklist = ["de", "von", "van", "bin"]
-    return all(((len(x) > 0 and x[0].isupper()) or any(y == x for y in capital_blacklist)) for x in words[1])
+    caps = 0
+    for word in words[1]:
+        caps += 1 if (len(word) > 0 and (word[0].isupper() or any(y == word for y in capital_blacklist))) else 0
+    return caps / len(words[1])
 
 
 def al_check(words):
@@ -126,7 +129,7 @@ _VECTORIZER_NAMES_ = [
     'hyphenated_check',
     'prefix_article_check',
     'prefix_preposition_check',
-   # 'atter_checker',
+#    'atter_checker',
    # 'comma_middle_check',
     'possessive_check',
     'num_words',
