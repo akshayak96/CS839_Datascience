@@ -4,13 +4,12 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_predict, cross_val_score
 from collections import OrderedDict
 import random
-from sklearn.metrics import precision_score, recall_score, f1_score
 import features_code
 
 import warnings
 warnings.filterwarnings("ignore")
 
-#features_code.generate_feature_csv('training_set')
+features_code.generate_feature_csv('training_set')
 
 # read from file
 terms = []

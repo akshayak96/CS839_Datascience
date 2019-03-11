@@ -50,7 +50,7 @@ for k, v in models.items():
     print('Running ' + k)
     if k != 'linear_reg':
         if k == 'svm':
-            max_iter = 0
+            max_iter = 500
             precisions.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='precision_macro', cv=5)))
             recalls.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='recall_macro', cv=5)))
             f1s.append(np.mean(cross_val_score(v(max_iter=max_iter), x_dev, y_dev, scoring='f1_macro', cv=5)))
