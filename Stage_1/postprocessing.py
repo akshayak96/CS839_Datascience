@@ -7,7 +7,7 @@ import vectorizer
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv('../training_set')
+features_code.generate_feature_csv('training_set')
 
 whitelist = []
 
@@ -28,7 +28,7 @@ with open('features.csv', 'r', encoding="utf-8") as csv_file:
         x_train.append(row[:-1])
         y_train.append(row[-1])
 
-features_code.generate_feature_csv('../test_set')
+features_code.generate_feature_csv('test_set')
 terms_test = []
 x_test = []
 y_test = []

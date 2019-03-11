@@ -12,7 +12,7 @@ import features_code
 import warnings
 warnings.filterwarnings("ignore")
 
-features_code.generate_feature_csv("../training_set")
+features_code.generate_feature_csv("training_set")
 
 # read from file
 x_dev = []
