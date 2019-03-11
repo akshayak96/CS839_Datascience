@@ -8,7 +8,7 @@ He was charged with first-degree murder in <n>Carson<\n>'s death.
 
 <n>Atwater<\n> is believed to be the man in a convenience-store photograph released by police.
 
-A second suspect, <n>Lawrence Alvin Lovett<\n> Jr., 17, is being sought in <n>Carson<\n>'s death, police said.
+A second suspect, <n>Lawrence Alvin Lovett Jr.<\n>, 17, is being sought in <n>Carson<\n>'s death, police said.
 
 He also faces a first-degree murder charge.
 
@@ -44,7 +44,7 @@ The young woman was a pre-medicine student who was double majoring in political 
 
 @highlight
 
-Police are also seeking <n>Lawrence Alvin Lovett<\n> Jr., 17
+Police are also seeking <n>Lawrence Alvin Lovett Jr.<\n>, 17
 
 @highlight
 
