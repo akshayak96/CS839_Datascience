@@ -1,0 +1,8 @@
+We have extracted the entity person names. The person names are marked up in the documents using <n>...<\n> tags.
+
+training_files and test_files contain the dev / test files. 
+
+main.py is cross validation on set I
+postprocessing.py is after postprocessing metrics on set J
+debugger.py is debugging od best model from cross-validation
+features_code.py and vectorizer.py contain code to parse files and covnert phrases to vectors respectively.
