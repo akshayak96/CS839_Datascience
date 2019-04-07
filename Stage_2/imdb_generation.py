@@ -136,6 +136,6 @@ def main():
         for row in full_data:
             writer.writerow(row)
 
-
+            
 if __name__ == "__main__":
     main()
