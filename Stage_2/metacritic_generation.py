@@ -45,8 +45,8 @@ def main():
         matches_summary = re.findall(regrex_summary, data_final)
         matches_summary = list(matches_summary)
 
-        regrex_release = "(?<=<span class=\"label\">Release Date:</span>                                                                    <span>)(.*?)(?=</span>)"
-        matches_release = re.findall(regrex_release, data_final)
+        regrex_release = "(?<=<span class=\"label\">Release Date:</span><span>)(.*?)(?=</span>)"
+        matches_release = re.findall(regrex_release, re.sub(r'</span>\s*<span>', r'</span><span>', data_final))
         matches_release = list(matches_release)
 
         regrex_meta_rating = "(?<=<div class=\"metascore_w large movie positive\">)(.*?)(?=</div>)"
@@ -56,7 +56,6 @@ def main():
         regrex_user_rating = "(?<=<div class=\"metascore_w user large movie positive\">)(.*?)(?=</div>)"
         matches_user_rating = re.findall(regrex_user_rating, data_final)
         matches_user_rating = list(matches_user_rating)
-        len(matches_user_rating)
 
         for index in range(len(matches_title)):
             new_movie = {}
