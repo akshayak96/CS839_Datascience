@@ -1,1 +1,17 @@
+We have extracted data from 2 web sources: IMDb and Metacritic.
 
+Table A : IMDb
+Table B: Metacritic
+
+Attributes: 
+
+Both the tables A and B have a common schema which is listed below:
+1. title - The movie titles
+2. release_year - The year that the movie was releasesd
+3. movie_rating - The ratings of the movie as per IMDb in Table A and Metacritic in Table B respectively 
+4. summary - The movie synopsis
+
+Number of Tuples:
+
+Table A: IMDb : 3250
+Table B - Metacritic: 3100
