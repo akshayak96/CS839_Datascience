@@ -45,7 +45,13 @@ def main():
         matches_title = list(matches_title)
 
         regex_match_release = "<span class=\"lister-item-year text-muted unbold\">\((.*?)\)</span>"
-        matches_release_year = re.findall(regex_match_release, data_final)
+        matches_release_year = re.findall(regex_match_release,
+                                          re.sub(
+                                              r"<span class=\"lister-item-year text-muted unbold\">\([A-Za-z]+\)\s*\(",
+                                              '<span class="lister-item-year text-muted unbold">(',
+                                              data_final
+                                          )
+                                          )
         matches_release_year = list(matches_release_year)
 
         regex_match_imdb_score = "<score>(.*?)</strong>"
