@@ -8,7 +8,7 @@ import csv
 def main():
     full_data = []
 
-    directory = "imbd_html_data"
+    directory = "../data/imbd_html_data"
     all_files = os.listdir(directory)
     path_files = []
     for file in all_files:
@@ -123,7 +123,7 @@ def main():
            # new_movie['gross'] = matches_gross[index]
             full_data.append(new_movie)
 
-    with open('imdb.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    with open('../data/imdb.csv', 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = [
             'title',
             'release_year',

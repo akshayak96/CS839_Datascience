@@ -7,7 +7,7 @@ import csv
 def main():
     full_data = []
 
-    directory = "metacritic_html_data"
+    directory = "../data/metacritic_html_data"
     all_files = os.listdir(directory)
     path_files = []
     for file in all_files:
@@ -68,7 +68,7 @@ def main():
             new_movie['summary'] = matches_summary[index].strip().strip('"')
             full_data.append(new_movie)
 
-    with open('metacritic.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    with open('../data/metacritic.csv', 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['title', 'release_year',
                       #'meta_rating',
                       'movie_rating','summary']
