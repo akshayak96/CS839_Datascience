@@ -1,0 +1,10 @@
+Table A - IMDB.csv
+Table B - Metacritic.csv
+Candidate set - Job_Movie_apply_rules_ds.csv
+Prediction list - apply_classifier_1.csv
+Final set of 400 labeled tuple pairs - labeled.csv
+Reduced set of candidate tuple pairs - reduced_Job_Movie_apply_rules_ds.csv
+File detailing the number of candidate set tuples, density computation as well as the precision recall details - Precision_Recall.docx
+Density calculation on the 50 tuples of the candidate set - density_check.ipynb
+Script to help label the 400 candidate set tuples - label_help.ipynb
+estimating_precision_recall.ipynb - Jupyter notebook provided with the file paths of the tables A, B, prediction list, candidate set, and the labeled csv files.
